@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="pendu.css">
+    <link rel="shortcut icon" href="icone-pendu.jpg" type="image/x-icon">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=emoji_objects" />
+
+    <title>Jeux-du-pendu</title>
+</head>
+
+<body>
+    <main>
+        <h1> Jeux du pendu : </h1>
+        <p class="text-joueur"> Trouvez le mot caché - entrez une lettre à l'aide de votre clavier </p>
+
+        <div class="game-container">
+            <svg height="260px" width="200px" class="pendu">
+                <!--Support du pendu-->
+                <line x1="60" y1="20" x2="140" y2="20" />
+                <line x1="140" y1="20" x2="140" y2="50" class="figure-game" />
+                <line x1="60" y1="20" x2="60" y2="230" />
+                <line x1="20" y1="230" x2="100" y2="230" />
+
+                <!--Bonhomme pendu-->
+                <circle cx="140" cy="70" r="20" class="figure-game" />
+
+                <!--corps du joueur-->
+                <line x1="140" y1="90" x2="140" y2="140" class="figure-game" />
+
+                <!--bras du joueur-->
+                <line x1="140" y1="120" x2="100" y2="100" class="figure-game" />
+                <line x1="140" y1="120" x2="180" y2="100" class="figure-game" />
+
+                <!--Jambe du joueur-->
+                <line x1="140" y1="140" x2="120" y2="200" class="figure-game" />
+                <line x1="140" y1="140" x2="160" y2="200" class="figure-game" />
+            </svg>
+
+            <div class="groupeDoit">
+                <div class="mauvaise-lettre-container">
+                    C'est lettre ne font pas parti du mot:
+                    <div id="mauvaise-lettre"></div>
+                </div>
+                <span class="text-decoration"></span>
+                <div class="indiceUser" id="indiceUser">
+                    vos indices sur le mot a trouvé 😉 :
+                    <ul class="list-indice">
+                    </ul>
+                </div>
+                <div class="mot" id="mot"></div>
+            </div>
+        </div>
+
+        <button type="button" class="indice" id="indice">
+            <span class="material-symbols-outlined design-indice">
+                emoji_objects
+            </span>
+        </button>
+
+        <!--contenant message final-->
+        <div class="popup-container" id="popup-container">
+            <div class="popup">
+                <h2 id="message-final"></h2>
+                <button type="button" id="play-button"> Rejouer !</button>
+            </div>
+        </div>
+        <!--Notifiaction-->
+        <div class="notification-container" id="notification-container">
+            <p> vous avez déjà essayé cette lettre ! 🤔</p>
+        </div>
+    </main>
+
+
+    <script src="pendu.js"></script>
+</body>
+
+</html>
