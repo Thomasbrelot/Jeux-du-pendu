@@ -135,12 +135,12 @@ ul.list-indice {
   border-top-right-radius: 30px;
   padding: 30px 15px;
   left: 0;
-  bottom: -190px;
+  bottom: -300px;
   width: 100%;
   transition: transform 0.5s ease-in-out;
 }
 .notification-container.afficher {
-  transform: translateY(-190px);
+  transform: translateY(-300px);
 }
 .notification-text {
   font-size: 24px;
@@ -165,6 +165,9 @@ ul.list-indice {
   margin: 0.5em 0em;
 }
 .btnClavier {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0.25em 0.5em;
   border: solid 1px;
   border-radius: 25px;
@@ -208,12 +211,13 @@ ul.list-indice {
     font-size: 16px;
   }
   .mot {
-    bottom: 275px;
+    bottom: 250px;
   }
   .design-indice {
     font-size: 18px;
   }
   .indice {
+    margin: 16px 6px;
     padding: 0.25em;
   }
   .indiceUser {
@@ -228,15 +232,14 @@ ul.list-indice {
   }
   .keyboard {
     bottom: 6%;
+    width: 0;
   }
   .btnClavier {
-    font-size: 14px;
-    width: 30px;
+    font-size: 16px;
+    width: 22px;
+    padding: 0px 6px;
   }
   .delete {
     width: 96px !important;
   }
-}
-test{
-  margin-top: 2;
 }
