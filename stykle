@@ -1,0 +1,18 @@
+#mauvaise-lettre {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 0.75em;
+}
+
+.indiceUser {
+  margin-top: 1em;
+}
+
+
+
+
+
+
+

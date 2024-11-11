@@ -1,5 +1,7 @@
 //on va chercher les élements dans l'HTML
 const motElement = document.getElementById('mot');
+const letters = document.getElementById('letters');
+const lettre = document.getElementById('lettre');
 const mauvaiseLettre = document.getElementById('mauvaise-lettre');
 const rejouerBtn = document.getElementById('play-button');
 const popup = document.getElementById('popup-container');
@@ -9,68 +11,261 @@ const indice = document.getElementById('indice');
 const indiceUser = document.getElementById('indiceUser');
 const figureGame = document.querySelectorAll('.figure-game');
 const words = [
+  // Ajoutez les mots et indices existants ici...
+
+  // Nouveau mot
   {
-    word: 'Chaussure',
-    info: 'Se porte aux pieds',
-    hint: ["S'utilise au quotidien"],
-  },
-  {
-    word: 'Ordinateur',
-    info: 'Permet de traiter des données',
+    word: 'Pizza',
+    info: "Plat italien composé d'une pâte garnie",
     hint: [
-      'Appareil électronique',
-      'Utilisé pour travailler',
-      'Possède un écran et un clavier',
+      'Cuite au four',
+      'Peut avoir diverses garnitures',
+      'Populaire dans le monde entier',
     ],
   },
   {
-    word: 'Livre',
-    info: 'Contient des histoires',
+    word: 'Soleil',
+    info: 'Astres lumineux du système solaire',
     hint: [
-      'Peut être imprimé',
-      'Utilisé pour la lecture',
-      'Composé de pages reliées',
+      'Source de lumière et de chaleur',
+      'Visible le jour',
+      'Essentiel à la vie sur Terre',
     ],
   },
   {
-    word: 'Avion',
-    info: 'Permet de voyager dans les airs',
-    hint: ['Moyen de transport', 'Possède des ailes', 'Utilise des moteurs'],
-  },
-  {
-    word: 'Télévision',
-    info: 'Affiche des images et du son',
+    word: 'Porte',
+    info: 'Ouverture dans un mur',
     hint: [
-      'Utilisée pour regarder des programmes',
-      'Possède un écran',
-      'Peut être connectée à Internet',
+      'Utilisée pour entrer et sortir',
+      'Composée d’un battant',
+      'Souvent équipée d’une serrure',
     ],
   },
   {
-    word: 'Voiture',
-    info: 'Moyen de transport terrestre',
+    word: 'Bureau',
+    info: 'Meuble utilisé pour travailler',
     hint: [
-      'Utilisée pour se déplacer',
-      'Possède quatre roues',
-      "Fonctionne à l'essence",
+      'Possède souvent des tiroirs',
+      'Utilisé dans un espace de travail',
+      'Peut être équipé d’un ordinateur',
     ],
   },
   {
-    word: 'Banane',
-    info: 'Fruit jaune courbé',
+    word: 'Ciel',
+    info: 'Espace visible au-dessus de la Terre',
     hint: [
-      'Possède une peau',
-      'Riche en potassium',
-      'Souvent utilisée dans les smoothies',
+      'Contient des nuages',
+      'Visible pendant la journée',
+      'Abritant les étoiles la nuit',
+    ],
+  },
+  {
+    word: 'Chat',
+    info: 'Animal domestique',
+    hint: [
+      'Souvent un animal de compagnie',
+      'Aime se reposer',
+      'Très agile et curieux',
+    ],
+  },
+  {
+    word: 'Lune',
+    info: 'Satellite naturel de la Terre',
+    hint: [
+      'Visible la nuit',
+      'Change de forme au cours du mois',
+      'Aucune vie ne s’y trouve',
+    ],
+  },
+  {
+    word: 'Mouton',
+    info: 'Animal de ferme',
+    hint: [
+      'Produit de la laine',
+      'Souvent élevé pour sa viande',
+      'Aime paître dans les prés',
+    ],
+  },
+  {
+    word: 'Ferme',
+    info: 'Lieu d’élevage et de culture',
+    hint: [
+      'On y trouve des animaux',
+      'Elle produit des récoltes',
+      'Lieux de travail pour les agriculteurs',
+    ],
+  },
+  {
+    word: 'Vache',
+    info: 'Animal de ferme élevé pour le lait',
+    hint: [
+      'Produit du lait',
+      'Grande taille',
+      'Souvent tachetée de noir et blanc',
+    ],
+  },
+  {
+    word: 'Chocolat',
+    info: 'Confiserie sucrée',
+    hint: [
+      'Brun ou blanc',
+      'Fait à base de cacao',
+      'Utilisé dans les desserts',
+    ],
+  },
+  {
+    word: 'Ciseaux',
+    info: 'Instrument pour couper',
+    hint: ['Possède deux lames', 'Utilisé pour découper', 'Outil de bureau'],
+  },
+  {
+    word: 'Forêt',
+    info: 'Grand espace couvert d’arbres',
+    hint: [
+      'Lieu de biodiversité',
+      'Riches en arbres et plantes',
+      'Habitat pour de nombreux animaux',
+    ],
+  },
+  {
+    word: 'Poisson',
+    info: 'Animal aquatique',
+    hint: ['Vit dans l’eau', 'Peut être mangé', 'Respire avec des branchies'],
+  },
+  {
+    word: 'Château',
+    info: 'Grand bâtiment fortifié',
+    hint: [
+      'Peut être historique',
+      'Souvent associé à la royauté',
+      'Possède des murs épais et des tours',
     ],
   },
   {
     word: 'Montagne',
-    info: 'Grande élévation naturelle du terrain',
+    info: 'Élévation naturelle de terrain',
     hint: [
       'Peut être enneigée',
       'Propice à la randonnée',
       'Offre de magnifiques paysages',
+    ],
+  },
+  {
+    word: 'Gâteau',
+    info: 'Dessert sucré',
+    hint: ['Cuit au four', 'Peut être décoré', 'Présent lors des fêtes'],
+  },
+  {
+    word: 'Télévision',
+    info: 'Appareil pour regarder des émissions',
+    hint: [
+      'Possède un écran',
+      'Peut être connectée à Internet',
+      'Souvent utilisée pour se divertir',
+    ],
+  },
+  {
+    word: 'Pyramide',
+    info: 'Structure en forme de tétraèdre',
+    hint: [
+      'Associée à l’Égypte',
+      'Possède une base carrée',
+      'Composée de grandes pierres',
+    ],
+  },
+  {
+    word: 'Chocolat',
+    info: 'Confiserie sucrée',
+    hint: [
+      'Brun ou blanc',
+      'Fait à base de cacao',
+      'Utilisé dans les desserts',
+    ],
+  },
+  {
+    word: 'Pont',
+    info: 'Structure reliant deux points',
+    hint: [
+      'Permet de traverser',
+      "Au-dessus de l'eau",
+      'Structure architecturale',
+    ],
+  },
+  {
+    word: 'Bicyclette',
+    info: 'Moyen de transport à deux roues',
+    hint: ['Fonctionne par pédalage', 'Permet de se déplacer', 'Écologique'],
+  },
+  {
+    word: 'Avion',
+    info: 'Moyen de transport aérien',
+    hint: [
+      'Possède des ailes',
+      'Utilise des moteurs',
+      'Capable de voyager rapidement',
+    ],
+  },
+  {
+    word: 'Bateau',
+    info: 'Moyen de transport sur l’eau',
+    hint: [
+      'Utilisé pour la navigation',
+      'Peut être à moteur ou à voile',
+      'Flotte sur l’eau',
+    ],
+  },
+  {
+    word: 'École',
+    info: 'Lieu d’apprentissage',
+    hint: [
+      'Enseignement aux enfants',
+      'Contient des salles de classe',
+      'Lieu de socialisation',
+    ],
+  },
+  {
+    word: 'Éléphant',
+    info: 'Animal terrestre géant',
+    hint: [
+      'A de grandes oreilles',
+      'Possède une trompe',
+      'Vit en Afrique et en Asie',
+    ],
+  },
+  {
+    word: 'Brouillard',
+    info: 'Phénomène météorologique',
+    hint: [
+      'Réduit la visibilité',
+      'Souvent présent le matin',
+      'Formé de petites gouttes d’eau',
+    ],
+  },
+  {
+    word: 'Ciel',
+    info: 'Espace visible au-dessus de la Terre',
+    hint: [
+      'Contient des nuages',
+      'Visible pendant la journée',
+      'Abritant les étoiles la nuit',
+    ],
+  },
+  {
+    word: 'Cicatrice',
+    info: 'Marque laissée sur la peau après une blessure',
+    hint: [
+      'Résultat d’une blessure',
+      'Change de couleur avec le temps',
+      'Peut être permanente',
+    ],
+  },
+  {
+    word: 'Douche',
+    info: 'Installation pour se laver',
+    hint: [
+      'Utilise de l’eau',
+      'Peut être en cabine',
+      'Utilisée quotidiennement',
     ],
   },
   {
@@ -83,75 +278,327 @@ const words = [
     ],
   },
   {
-    word: 'Café',
-    info: 'Boisson stimulante',
+    word: 'Chiffre',
+    info: 'Symbole représentant un nombre',
     hint: [
-      'Souvent consommée le matin',
-      'Provient des grains de café',
-      'Peut être préparée sous différentes formes',
+      'Utilisé dans les mathématiques',
+      'De 0 à 9',
+      'Utilisé pour compter',
     ],
   },
   {
-    word: 'Souris',
-    info: "Périphérique d'entrée pour l'ordinateur",
+    word: 'Château',
+    info: 'Bâtiment fortifié',
     hint: [
-      'Utilisée pour pointer et cliquer',
-      'Peut être sans fil',
-      'Possède des boutons',
+      'Symbole de la royauté',
+      'Construite avec de grandes pierres',
+      'Possède des tours et un fossé',
     ],
   },
   {
-    word: 'Football',
-    info: 'Sport collectif joué avec un ballon',
+    word: 'Lentille',
+    info: 'Plante de légumineuse',
     hint: [
-      'Populaire dans de nombreux pays',
-      'Se joue sur un terrain',
-      'Le but est de marquer des buts',
+      'Peut être cuite en soupe',
+      'Riche en protéines',
+      'Petit légume rond',
     ],
   },
   {
-    word: 'Arbre',
-    info: "Plante vivace dotée d'une tige ligneuse",
+    word: 'Manteau',
+    info: 'Vêtement chaud pour l’extérieur',
     hint: [
-      'Possède des feuilles',
-      'Peut produire des fruits',
-      "Offre de l'ombre et de l'oxygène",
+      'Porté en hiver',
+      'Recouvre le corps',
+      'Souvent en laine ou en tissu épais',
     ],
   },
   {
-    word: 'Piano',
-    info: 'Instrument de musique à clavier',
+    word: 'Soleil',
+    info: 'Astres lumineux du système solaire',
     hint: [
-      'Se joue en appuyant sur les touches',
-      'Utilisé dans la musique classique',
-      'Possède plusieurs octaves',
+      'Source de lumière et de chaleur',
+      'Visible le jour',
+      'Essentiel à la vie sur Terre',
     ],
   },
   {
-    word: 'Pizza',
-    info: "Plat italien composé d'une pâte garnie",
+    word: 'Panier',
+    info: 'Objet pour transporter des choses',
     hint: [
-      'Cuite au four',
-      'Peut avoir diverses garnitures',
-      'Populaire dans le monde entier',
+      'Souvent fait de paille ou de plastique',
+      'Utilisé pour les courses',
     ],
   },
   {
-    word: 'Maison',
-    info: "Lieu où l'on vit",
+    word: 'Pantalon',
+    info: 'Vêtement couvrant les jambes',
     hint: [
-      'Contient des chambres',
-      'Structure avec un toit',
-      'Abri contre le climat',
+      'Porté au quotidien',
+      'Peut être en jean ou en tissu',
+      'A une fermeture ou un élastique',
     ],
   },
   {
-    word: 'Train',
-    info: 'Moyen de transport ferroviaire',
+    word: 'Camion',
+    info: 'Véhicule pour transporter des marchandises',
+    hint: ['Utilisé par les routiers', 'Gros moteur', 'Possède une remorque'],
+  },
+  {
+    word: 'Orage',
+    info: 'Phénomène météorologique violent',
     hint: [
-      'Circule sur des rails',
-      'Longue suite de wagons',
-      'Transport en commun rapide',
+      'Accompagné de tonnerre',
+      'Produits des éclairs',
+      'Souvent suivi de pluie',
+    ],
+  },
+  {
+    word: 'Livreur',
+    info: 'Personne qui distribue des colis',
+    hint: [
+      'Souvent en camion ou à vélo',
+      'Apporte des paquets',
+      'Peut déposer des repas',
+    ],
+  },
+  {
+    word: 'Boulangerie',
+    info: 'Lieu où l’on achète du pain',
+    hint: [
+      'Vente de baguettes et de croissants',
+      'Odeur de pain frais',
+      'Gérée par un boulanger',
+    ],
+  },
+  {
+    word: 'Calendrier',
+    info: 'Permet de suivre les jours',
+    hint: [
+      'Affiche mois et jours',
+      'Utile pour noter des rendez-vous',
+      'Souvent accroché au mur',
+    ],
+  },
+  {
+    word: 'Bougie',
+    info: 'Objet qui brûle pour donner de la lumière',
+    hint: [
+      'Fait de cire',
+      'Allumée pour des occasions spéciales',
+      'Peut être parfumée',
+    ],
+  },
+  {
+    word: 'Papillon',
+    info: 'Insecte coloré',
+    hint: [
+      'A des ailes légères',
+      'Sort au printemps',
+      'Commence sa vie en tant que chenille',
+    ],
+  },
+  {
+    word: 'Tortue',
+    info: 'Reptile à carapace',
+    hint: [
+      'Marche lentement',
+      'Vit sur terre ou dans l’eau',
+      'Peut vivre très longtemps',
+    ],
+  },
+  {
+    word: 'Horloge',
+    info: 'Indique l’heure',
+    hint: [
+      'Accrochée au mur',
+      'Possède des aiguilles',
+      'Émet parfois un tic-tac',
+    ],
+  },
+  {
+    word: 'Éponge',
+    info: 'Objet pour nettoyer',
+    hint: ['Absorbe l’eau', 'Utilisée dans la cuisine', 'Souple et mou'],
+  },
+  {
+    word: 'Stylo',
+    info: 'Outil pour écrire',
+    hint: [
+      'Rempli d’encre',
+      'Peut être à bille ou plume',
+      'Utilisé pour prendre des notes',
+    ],
+  },
+  {
+    word: 'Coiffeur',
+    info: 'Personne qui coupe les cheveux',
+    hint: [
+      'Travaille avec des ciseaux',
+      'Fait des coiffures',
+      'Travaille dans un salon',
+    ],
+  },
+  {
+    word: 'Cuisine',
+    info: 'Pièce où l’on prépare les repas',
+    hint: [
+      'Contient un réfrigérateur',
+      'Équipée d’une cuisinière',
+      'Peut contenir un four',
+    ],
+  },
+  {
+    word: 'Dentiste',
+    info: 'Médecin des dents',
+    hint: [
+      'Utilise des instruments dentaires',
+      'S’occupe des caries',
+      'Travaille dans un cabinet dentaire',
+    ],
+  },
+  {
+    word: 'Abricot',
+    info: 'Petit fruit orange',
+    hint: [
+      'A une peau douce',
+      'A un noyau au centre',
+      'Sucré et juteux en été',
+    ],
+  },
+  {
+    word: 'Tempête',
+    info: 'Phénomène météorologique violent',
+    hint: [
+      'Souvent accompagné de vent fort',
+      'Peut causer des dégâts',
+      'Fréquente en automne',
+    ],
+  },
+  {
+    word: 'Lac',
+    info: 'Grande étendue d’eau douce',
+    hint: [
+      'Entouré de terre',
+      'Lieu de pêche',
+      'Parfois utilisé pour se baigner',
+    ],
+  },
+  {
+    word: 'Casque',
+    info: 'Protection pour la tête',
+    hint: [
+      'Porté par les motards',
+      'Utilisé aussi pour écouter de la musique',
+      'Peut être en plastique ou métal',
+    ],
+  },
+  {
+    word: 'Réfrigérateur',
+    info: 'Électroménager pour conserver les aliments au frais',
+    hint: [
+      'Contient des étagères',
+      'Souvent dans la cuisine',
+      'Permet de garder la nourriture fraîche',
+    ],
+  },
+  {
+    word: 'Poire',
+    info: 'Fruit sucré en forme de goutte',
+    hint: [
+      'Peau verte ou jaune',
+      'Contient des pépins',
+      'Souvent consommée crue ou en compote',
+    ],
+  },
+  {
+    word: 'Verre',
+    info: 'Récipient pour boire',
+    hint: [
+      'Peut être en verre ou plastique',
+      'Utilisé pour l’eau ou les boissons',
+      'Se trouve dans la cuisine',
+    ],
+  },
+  {
+    word: 'Tennis',
+    info: 'Sport avec une raquette et une balle',
+    hint: [
+      'Se joue sur un court',
+      'Nécessite une raquette',
+      'Le but est de marquer des points',
+    ],
+  },
+  {
+    word: 'Avocat',
+    info: 'Fruit vert avec un noyau',
+    hint: [
+      'Utilisé dans le guacamole',
+      'Riche en bonnes graisses',
+      'Texture crémeuse',
+    ],
+  },
+  {
+    word: 'Monnaie',
+    info: 'Pièces ou billets pour payer',
+    hint: [
+      'Utilisée dans le commerce',
+      'Peut être de papier ou métal',
+      'Représente une valeur',
+    ],
+  },
+  {
+    word: 'Soleil',
+    info: 'Astres lumineux du système solaire',
+    hint: [
+      'Source de lumière et de chaleur',
+      'Visible le jour',
+      'Essentiel à la vie sur Terre',
+    ],
+  },
+  {
+    word: 'Cheveux',
+    info: 'Poils sur la tête',
+    hint: [
+      'Peut être coupé ou coiffé',
+      'Peut être de différentes couleurs',
+      'Protège le cuir chevelu',
+    ],
+  },
+  {
+    word: 'Sommeil',
+    info: 'Période de repos pour le corps',
+    hint: [
+      'Nécessaire chaque nuit',
+      'Indispensable pour la santé',
+      'Se fait en général dans un lit',
+    ],
+  },
+  {
+    word: 'Infirmerie',
+    info: 'Lieu de soins dans les écoles ou entreprises',
+    hint: [
+      'Lieu pour les premiers soins',
+      'Contient des médicaments',
+      'Accueille les personnes malades',
+    ],
+  },
+  {
+    word: 'Rivière',
+    info: 'Cours d’eau qui coule vers la mer',
+    hint: [
+      'Moins large qu’un fleuve',
+      'Peut avoir des poissons',
+      'Souvent utilisé pour l’irrigation',
+    ],
+  },
+  {
+    word: 'Ferme',
+    info: 'Lieu d’élevage et de culture',
+    hint: [
+      'On y trouve des animaux',
+      'Elle produit des récoltes',
+      'Lieux de travail pour les agriculteurs',
     ],
   },
   {
@@ -173,241 +620,29 @@ const words = [
     ],
   },
   {
-    word: 'École',
-    info: "Lieu d'apprentissage",
+    word: 'Corde',
+    info: 'Utilisée pour attacher ou tirer',
     hint: [
-      'Enseignement aux enfants',
-      'Contient des salles de classe',
-      'Lieu de socialisation',
+      'Solide et épaisse',
+      'Peut être en chanvre ou nylon',
+      'Très utile pour le camping',
     ],
   },
   {
-    word: 'Bateau',
-    info: "Moyen de transport sur l'eau",
+    word: 'Enveloppe',
+    info: 'Papier pour contenir des lettres',
     hint: [
-      'Flotte',
-      'Utilisé pour la navigation',
-      'Peut être à moteur ou à voile',
+      'Utilisée pour envoyer du courrier',
+      'Doit être fermée',
+      'Doit être affranchie',
     ],
-  },
-  {
-    word: 'Table',
-    info: 'Meuble pour poser des objets',
-    hint: [
-      'Utilisée pour manger',
-      'Possède quatre pieds',
-      'Présente dans de nombreuses pièces',
-    ],
-  },
-  {
-    word: 'Chien',
-    info: 'Animal de compagnie fidèle',
-    hint: ['Aime jouer', 'Aboyer', "L'un des meilleurs amis de l'homme"],
-  },
-  {
-    word: 'Lampe',
-    info: 'Éclaire une pièce',
-    hint: [
-      'Source de lumière',
-      'Fonctionne avec une ampoule',
-      'Utilisée souvent la nuit',
-    ],
-  },
-  {
-    word: 'Bicyclette',
-    info: 'Moyen de transport à deux roues',
-    hint: ['Fonctionne par pédalage', 'Permet de se déplacer', 'Écologique'],
-  },
-  {
-    word: 'Montre',
-    info: "Indique l'heure",
-    hint: [
-      'Se porte au poignet',
-      'Possède un cadran',
-      'Peut être analogique ou numérique',
-    ],
-  },
-  {
-    word: 'Jardin',
-    info: 'Espace extérieur avec des plantes',
-    hint: [
-      'Contient souvent des fleurs',
-      'Lieu de détente',
-      "Nécessite de l'entretien",
-    ],
-  },
-  {
-    word: 'Ballon',
-    info: 'Objet rond pour jouer',
-    hint: [
-      'Utilisé dans plusieurs sports',
-      'Peut être en cuir ou en plastique',
-      "S'utilise en plein air ou en intérieur",
-    ],
-  },
-  {
-    word: 'Neige',
-    info: 'Précipitation glacée',
-    hint: ['Blanche', 'Apparaît en hiver', 'Flocons froids'],
-  },
-  {
-    word: 'Clé',
-    info: "Permet d'ouvrir une serrure",
-    hint: [
-      'Petit objet en métal',
-      'Utilisée pour la sécurité',
-      "Permet l'accès",
-    ],
-  },
-  {
-    word: 'Fourchette',
-    info: 'Ustensile pour manger',
-    hint: ['Possède des dents', 'Utilisé à table', "Accompagnée d'un couteau"],
-  },
-  {
-    word: 'Étoile',
-    info: 'Objet céleste brillant',
-    hint: ['Visible la nuit', 'Lumière lointaine', 'Présente dans le ciel'],
-  },
-  {
-    word: 'Lunettes',
-    info: 'Objet pour améliorer la vue',
-    hint: [
-      'Portées sur le nez',
-      'Peuvent être de soleil',
-      'Aident à voir clairement',
-    ],
-  },
-  {
-    word: 'Glace',
-    info: 'Eau gelée',
-    hint: ['Se mange en dessert', 'Très froide', 'Saveur sucrée ou nature'],
-  },
-  {
-    word: 'Hôpital',
-    info: 'Lieu de soins médicaux',
-    hint: [
-      'Contient des médecins',
-      'Lieux pour les patients',
-      'Urgences disponibles',
-    ],
-  },
-  {
-    word: 'Avocat',
-    info: 'Fruit vert avec un noyau',
-    hint: [
-      'Utilisé dans le guacamole',
-      'Riche en bonnes graisses',
-      'Texture crémeuse',
-    ],
-  },
-  {
-    word: 'Feu',
-    info: 'Phénomène de combustion',
-    hint: [
-      'Dégage chaleur et lumière',
-      'Utilisé pour cuisiner',
-      'Dangereux sans contrôle',
-    ],
-  },
-  {
-    word: 'Coquillage',
-    info: 'Objet trouvé à la plage',
-    hint: ['Provient de la mer', 'Souvenir de vacances', 'Naturel'],
-  },
-  {
-    word: 'Cerise',
-    info: 'Petit fruit rouge',
-    hint: ['Avec un noyau', 'Utilisé dans des desserts', 'Goût sucré'],
-  },
-  {
-    word: 'Aigle',
-    info: 'Oiseau de proie',
-    hint: ['Vol puissant', 'Griffes acérées', 'Vue perçante'],
-  },
-  {
-    word: 'Robot',
-    info: 'Machine programmable',
-    hint: [
-      'Peut effectuer des tâches',
-      'Utilisé en industrie',
-      'Commandé par ordinateur',
-    ],
-  },
-  {
-    word: 'Chapeau',
-    info: 'Accessoire de tête',
-    hint: [
-      'Protège du soleil',
-      'Divers styles',
-      'Fait souvent partie de la mode',
-    ],
-  },
-  {
-    word: 'Pluie',
-    info: "Précipitation de gouttes d'eau",
-    hint: ['Vient des nuages', 'Mouille le sol', 'Fréquente en automne'],
-  },
-  {
-    word: 'Miel',
-    info: 'Produit par les abeilles',
-    hint: ['Très sucré', 'Liquide doré', 'Utilisé dans des recettes'],
-  },
-  {
-    word: 'Vélo',
-    info: 'Transport à deux roues',
-    hint: ['Se pédale', 'Écologique', 'Utilisé en ville'],
-  },
-  {
-    word: 'Pont',
-    info: 'Structure reliant deux points',
-    hint: [
-      'Permet de traverser',
-      "Au-dessus de l'eau",
-      'Structure architecturale',
-    ],
-  },
-  {
-    word: 'Télécommande',
-    info: 'Permet de contrôler à distance',
-    hint: [
-      'Utilisée pour la télévision',
-      'Fonctionne souvent avec des piles',
-      'Peut changer les chaînes',
-    ],
-  },
-  {
-    word: 'Écharpe',
-    info: 'Accessoire pour le cou',
-    hint: ['Protège du froid', 'En laine ou coton', 'Portée en hiver'],
-  },
-  {
-    word: 'Cheval',
-    info: 'Animal de ferme',
-    hint: ['Utilisé pour monter', 'Peut courir rapidement', "Aime l'herbe"],
-  },
-  {
-    word: 'Brosse',
-    info: 'Outil pour démêler les cheveux',
-    hint: ['Utilisée le matin', 'Fait de poils', 'Peut être à manche'],
-  },
-  {
-    word: 'Poisson',
-    info: 'Animal aquatique',
-    hint: ["Vit dans l'eau", 'Peut être mangé', 'Respire avec des branchies'],
-  },
-  {
-    word: 'Cerf',
-    info: 'Animal des forêts',
-    hint: ['Possède des bois', 'Herbivore', 'Vif et prudent'],
   },
 ];
 
 //on va choisir au hasard un mot pour jouer
 let motsSelect = words[Math.floor(Math.random() * words.length)];
 let indiceUtiliser = 0;
-console.log(motsSelect.word);
-const bonnesLettreArr = [''];
+const bonnesLettreArr = [];
 const mauvaiseLettreArr = [];
 
 //afficher les mots cachés
@@ -418,17 +653,19 @@ function afficheMot() {
       .split('')
       .map(
         (lettre) =>
-          `<span class="lettre">
+          `<div class="lettre" id="lettre">
           ${
             bonnesLettreArr.includes(removeAccents(lettre.toUpperCase()))
               ? lettre
               : ''
           }
-        </span>`
+        </div>`
       )
       .join('')}
   `;
 }
+afficheMot();
+console.log(motsSelect.word);
 // Fonction pour enlever les accents
 function removeAccents(str) {
   return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
@@ -461,7 +698,7 @@ function afficherNotification() {
   // Retirer la classe après 2 secondes pour permettre un nouvel affichage
   setTimeout(() => {
     notificationEle.classList.remove('afficher');
-  }, 1500); // 2000 ms = 2 secondes
+  }, 2000); // 2000 ms = 2 secondes
 }
 //function pour verifier si le joueur gagne
 function gamerWin() {
@@ -505,6 +742,7 @@ window.addEventListener('keydown', (e) => {
     }
   }
 });
+
 indice.addEventListener('click', function () {
   if (indiceUtiliser < 3) {
     const list = document.createElement('li');
@@ -534,6 +772,21 @@ rejouerBtn.addEventListener('click', () => {
 
   // Cache le popup de victoire pour démarrer une nouvelle partie
   popup.style.display = 'none';
+});
+
+// Sélectionner tous les boutons
+const btnClavier = document.querySelectorAll('.btnClavier'); // Exemple de classe pour les boutons
+btnClavier.forEach((button) => {
+  button.addEventListener('click', () => {
+    motElement.value += button.innerText;
+    console.log(btnClavier)
+  });
+});
+
+// Fonction pour gérer le bouton Delete
+document.querySelector('.delete').addEventListener('click', () => {
+  bonnesLettreArr.pop(); // Retirer la dernière lettre trouvée
+  afficheMot(); // Mettre à jour l'affichage du mot
 });
 
 afficheMot();

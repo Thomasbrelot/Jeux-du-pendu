@@ -13,88 +13,77 @@ body {
   align-items: center;
   text-align: center;
   overflow: hidden;
+  margin: auto;
 }
 h1 {
-  font-size: 45px;
-  font-weight: 700;
-  margin: 0.5em;
+  font-size: 60px;
+  font-weight: bold;
   text-decoration: line-through;
-  font-family: 'Courier New', Courier, monospace;
 }
 .text-joueur {
-  font-size: 20px;
-  margin: 1em 2em;
+  margin-top: 2em;
+  font-size: 22px;
 }
 .game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   stroke: #fff;
   stroke-width: 4px;
   stroke-linecap: round;
   fill: transparent;
-  display: flex;
   width: 100%;
-  justify-content: center;
-  align-items: center;
   margin-top: 4em;
+}
+svg.pendu {
+  width: 60%;
+}
+.figure-game {
+  display: none;
 }
 .groupeDoit {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  width: 40%;
+}
+.mauvaise-lettre-container {
+  font-size: 20px;
+}
+span.text-decoration {
+  text-decoration: line-through;
+  border: solid 1px;
   width: 100%;
-}
-
-.pendu {
-  width: 65%;
-}
-.figure-game {
-  display: none;
+  margin-top: 1em;
 }
 .mot {
   display: flex;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 125px;
+  bottom: 45%;
   color: black;
 }
-.mauvaise-lettre-container {
-  width: 100%;
-  font-size: 20px;
-  margin: 0em 1.5em;
-}
-#mauvaise-lettre {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-top: 0.75em;
-}
-
 .lettre {
   font-family: Arial, Helvetica, sans-serif;
   border-bottom: solid 3px;
   display: inline-flex;
-  font-size: 25px;
+  font-size: 35px;
   align-items: center;
   justify-content: center;
-  margin: 0px 3px;
+  margin: 0px 6px;
   height: 50px;
   width: 20px;
 }
-span.text-decoration {
-  text-decoration: line-through;
-  border: solid 1px;
-  width: 80%;
+ul.list-indice {
   margin-top: 1em;
 }
 .indiceUser {
-  margin-top: 1em;
+  margin-top: 0.5em;
 }
 .indice {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 15%;
+  right: 20%;
   margin: 2em 1em;
   cursor: pointer;
   background: none;
@@ -104,16 +93,13 @@ span.text-decoration {
   border-radius: 50%;
   background-color: #fff;
 }
-ul.list-indice {
-  margin-top: 1em;
-}
-
 .popup-container {
   background-color: #000000b8;
   position: fixed;
   width: 100%;
   height: 100%;
   top: 0;
+  left: 0;
   display: none;
   justify-content: center;
   align-items: center;
@@ -125,6 +111,7 @@ ul.list-indice {
   letter-spacing: 0.25em;
   text-transform: uppercase;
   text-align: center;
+  z-index: 2;
 }
 .popup button {
   cursor: pointer;
@@ -142,25 +129,69 @@ ul.list-indice {
   outline: 0;
 }
 .notification-container {
+  position: absolute;
   background-color: #000000b8;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   padding: 30px 15px;
-  position: absolute;
-  bottom: -85px;
+  left: 0;
+  bottom: -190px;
   width: 100%;
   transition: transform 0.5s ease-in-out;
 }
 .notification-container.afficher {
-  transform: translateY(-85px);
+  transform: translateY(-190px);
+}
+.notification-text {
+  font-size: 24px;
+  padding: 2em 2em;
+}
+.keyboard {
+  position: absolute;
+  z-index: -1;
+  bottom: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5em 0em;
+}
+.btnClavier {
+  padding: 0.25em 0.5em;
+  border: solid 1px;
+  border-radius: 25px;
+  margin: 5px 5px;
+  cursor: pointer;
+  font-size: 25px;
+  width: 50px;
+}
+.delete {
+  width: 95px;
+}
+
+@media screen and (max-width: 900px) {
+  .indice {
+    bottom: 0;
+    right: 0;
+  }
 }
 
 @media screen and (max-width: 500px) {
   h1 {
-    font-size: 35px;
+    font-size: 30px;
+    margin-top: 8px;
   }
   .text-joueur {
-    font-size: 16px;
+    font-size: 14px;
+    margin-top: 6px;
   }
   .game-container {
     flex-direction: column;
@@ -177,7 +208,7 @@ ul.list-indice {
     font-size: 16px;
   }
   .mot {
-    bottom: 50px;
+    bottom: 275px;
   }
   .design-indice {
     font-size: 18px;
@@ -190,9 +221,19 @@ ul.list-indice {
     font-size: 14px;
   }
   .notification-container {
-    bottom: -105px;
+    padding: 15px 0px;
   }
   .notification-container.afficher {
-    transform: translateY(-105px);
+    transform: translateY(-190px);
+  }
+  .keyboard {
+    bottom: 6%;
+  }
+  .btnClavier {
+    font-size: 14px;
+    width: 30px;
+  }
+  .delete {
+    width: 96px !important;
   }
 }
