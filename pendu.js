@@ -709,7 +709,7 @@ function gamerWin() {
 
   // Vérifie si toutes les lettres du mot ont été trouvées
   if (lettresTrouvees) {
-    messageFinal.innerText = `Félicitations ! Vous avez réussi! vous avez trouvé le mot : '${motsSelect.word}' 🎉`;
+    messageFinal.innerText = `Félicitations🎉 ! Vous avez réussi! vous avez trouvé le mot : '${motsSelect.word}', tentez votre chance de trouver les autres😉`;
     popup.style.display = 'flex'; // Affiche la popup avec le message de victoire
   }
 }
@@ -779,7 +779,7 @@ const btnClavier = document.querySelectorAll('.btnClavier'); // Exemple de class
 btnClavier.forEach((button) => {
   button.addEventListener('click', () => {
     motElement.value += button.innerText;
-    console.log(btnClavier)
+    console.log(btnClavier);
   });
 });
 

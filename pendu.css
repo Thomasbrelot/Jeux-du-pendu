@@ -197,7 +197,6 @@ ul.list-indice {
     margin-top: 6px;
   }
   .game-container {
-    flex-direction: column;
     width: 100%;
     margin-top: 1em;
   }
@@ -205,13 +204,14 @@ ul.list-indice {
     width: 50%;
   }
   .groupeDoit {
-    width: 100%;
+    width: 50%;
+    margin: 10px;
   }
   .mauvaise-lettre-container {
     font-size: 16px;
   }
   .mot {
-    bottom: 250px;
+    bottom: 230px;
   }
   .design-indice {
     font-size: 18px;
@@ -225,6 +225,7 @@ ul.list-indice {
     font-size: 14px;
   }
   .notification-container {
+    bottom: -190px;
     padding: 15px 0px;
   }
   .notification-container.afficher {
@@ -235,8 +236,8 @@ ul.list-indice {
     width: 0;
   }
   .btnClavier {
-    font-size: 16px;
-    width: 22px;
+    font-size: 22px;
+    width: 35px;
     padding: 0px 6px;
   }
   .delete {
