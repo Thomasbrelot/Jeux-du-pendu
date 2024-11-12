@@ -10,6 +10,7 @@ const messageFinal = document.getElementById('message-final');
 const indice = document.getElementById('indice');
 const indiceUser = document.getElementById('indiceUser');
 const figureGame = document.querySelectorAll('.figure-game');
+
 const words = [
   // Ajoutez les mots et indices existants ici...
 
@@ -742,6 +743,50 @@ window.addEventListener('keydown', (e) => {
     }
   }
 });
+window.addEventListener('load', () => {
+  function traitementLettre(lettre) {
+    if (lettre.match(/^[A-Z]$/)) {
+      const motSansAccent = removeAccents(motsSelect.word.toUpperCase());
+
+      if (motSansAccent.includes(lettre)) {
+        if (!bonnesLettreArr.includes(lettre)) {
+          bonnesLettreArr.push(lettre);
+          afficheMot();
+          gamerWin();
+        } else {
+          afficherNotification();
+        }
+      } else {
+        if (!mauvaiseLettreArr.includes(lettre)) {
+          mauvaiseLettreArr.push(lettre);
+          updateMauvaiseLettre();
+        } else {
+          afficherNotification();
+        }
+      }
+    }
+  }
+  // Ajoute un écouteur d'événements pour chaque bouton de clavier virtuel
+  const btnClavier = document.querySelectorAll('.btnClavier');
+  if (btnClavier.length > 0) {
+    btnClavier.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const lettre = btn.innerText.toUpperCase(); // Récupère la lettre du bouton
+        traitementLettre(lettre); // Appelle la fonction pour traiter la lettre
+
+        // Ajoute la lettre dans motElement si elle est devinée
+        if (motElement) {
+          motElement.value += lettre; // Ajoute la lettre dans motElement
+        }
+      });
+    });
+  }
+});
+// Fonction pour gérer le bouton Delete
+document.querySelector('.delete').addEventListener('click', () => {
+  bonnesLettreArr.pop(); // Retirer la dernière lettre trouvée
+  afficheMot(); // Mettre à jour l'affichage du mot
+});
 
 indice.addEventListener('click', function () {
   if (indiceUtiliser < 3) {
@@ -753,7 +798,6 @@ indice.addEventListener('click', function () {
     return;
   }
 });
-
 // button rejouer
 rejouerBtn.addEventListener('click', () => {
   // Réinitialise les tableaux des lettres bonnes et mauvaises
@@ -772,21 +816,6 @@ rejouerBtn.addEventListener('click', () => {
 
   // Cache le popup de victoire pour démarrer une nouvelle partie
   popup.style.display = 'none';
-});
-
-// Sélectionner tous les boutons
-const btnClavier = document.querySelectorAll('.btnClavier'); // Exemple de classe pour les boutons
-btnClavier.forEach((button) => {
-  button.addEventListener('click', () => {
-    motElement.value += button.innerText;
-    console.log(btnClavier);
-  });
-});
-
-// Fonction pour gérer le bouton Delete
-document.querySelector('.delete').addEventListener('click', () => {
-  bonnesLettreArr.pop(); // Retirer la dernière lettre trouvée
-  afficheMot(); // Mettre à jour l'affichage du mot
 });
 
 afficheMot();
