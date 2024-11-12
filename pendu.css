@@ -211,7 +211,7 @@ ul.list-indice {
     font-size: 16px;
   }
   .mot {
-    bottom: 230px;
+    bottom: 250px;
   }
   .design-indice {
     font-size: 18px;
@@ -236,8 +236,8 @@ ul.list-indice {
     width: 0;
   }
   .btnClavier {
-    font-size: 22px;
-    width: 35px;
+    font-size: 24px;
+    width: 30px;
     padding: 0px 6px;
   }
   .delete {
