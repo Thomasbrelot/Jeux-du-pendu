@@ -211,6 +211,7 @@ ul.list-indice {
   }
   .game-container {
     width: 100%;
+    height: 350px;
     margin-top: 1em;
   }
   .pendu {
