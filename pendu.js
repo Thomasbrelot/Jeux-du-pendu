@@ -12,9 +12,6 @@ const indiceUser = document.getElementById('indiceUser');
 const figureGame = document.querySelectorAll('.figure-game');
 
 const words = [
-  // Ajoutez les mots et indices existants ici...
-
-  // Nouveau mot
   {
     word: 'Pizza',
     info: "Plat italien composé d'une pâte garnie",
@@ -637,6 +634,326 @@ const words = [
       'Doit être fermée',
       'Doit être affranchie',
     ],
+  },
+  {
+    word: 'Clavier',
+    hint: [
+      'Utilisé pour taper du texte',
+      'Contient des touches',
+      "Essentiel pour l'ordinateur",
+    ],
+  },
+  {
+    word: 'Mer',
+    hint: [
+      "Grande étendue d'eau salée",
+      'Souvent visitée en été',
+      'Contient des poissons',
+    ],
+  },
+  {
+    word: 'Voiture',
+    hint: [
+      'Moyen de transport terrestre',
+      'Fonctionne avec un moteur',
+      'Peut avoir quatre roues',
+    ],
+  },
+  {
+    word: 'Table',
+    hint: [
+      'Support pour manger ou travailler',
+      'Peut être en bois',
+      "Meuble d'intérieur",
+    ],
+  },
+  {
+    word: 'Vélo',
+    hint: [
+      'Moyen de transport à deux roues',
+      'Propulsé par pédalage',
+      'Écologique',
+    ],
+  },
+  {
+    word: 'Lunettes',
+    hint: ['Aide à voir', 'Porté sur le nez', 'Accessoire de mode'],
+  },
+  {
+    word: 'Ordi',
+    hint: [
+      'Utilisé pour travailler et se divertir',
+      'Fonctionne avec un processeur',
+      'Peut être portable ou fixe',
+    ],
+  },
+  {
+    word: 'Banane',
+    hint: ['Fruit jaune', 'Riche en potassium', 'Facile à peler'],
+  },
+  {
+    word: 'Nuage',
+    hint: [
+      'Présent dans le ciel',
+      "Formé de vapeur d'eau",
+      'Parfois porteur de pluie',
+    ],
+  },
+  {
+    word: 'Téléphone',
+    hint: [
+      'Appareil de communication',
+      'Peut être mobile',
+      'Utilisé pour des appels',
+    ],
+  },
+  {
+    word: 'Volet',
+    hint: [
+      'Se ferme la nuit',
+      'Protège les fenêtres',
+      'Peut être en bois ou en métal',
+    ],
+  },
+  {
+    word: 'Montre',
+    hint: ["Objet pour lire l'heure", 'Porté au poignet', 'Parfois numérique'],
+  },
+  {
+    word: 'Ventilateur',
+    hint: [
+      'Utilisé pour refroidir',
+      'Fonctionne avec des pales',
+      'Pratique en été',
+    ],
+  },
+  {
+    word: 'Lit',
+    hint: [
+      'Lieu pour dormir',
+      'Se trouve dans la chambre',
+      'Possède un matelas',
+    ],
+  },
+  {
+    word: 'Stylo',
+    hint: ['Outil pour écrire', "Contient de l'encre", 'Utilisé pour signer'],
+  },
+  {
+    word: 'Crayon',
+    hint: ['Utilisé pour dessiner', 'Peut être gommé', 'Fabriqué en bois'],
+  },
+  {
+    word: 'Four',
+    hint: [
+      'Appareil de cuisine',
+      'Utilisé pour cuire',
+      'Fonctionne à haute température',
+    ],
+  },
+  {
+    word: 'Chapeau',
+    hint: ['Se porte sur la tête', 'Peut être en paille', 'Protège du soleil'],
+  },
+  {
+    word: 'Livre',
+    hint: ['Contient des pages', 'Peut être lu', 'Source de connaissance'],
+  },
+  {
+    word: 'Orange',
+    hint: [
+      'Fruit riche en vitamine C',
+      'Ronde et orange',
+      'A une peau épaisse',
+    ],
+  },
+  {
+    word: 'Poêle',
+    hint: [
+      'Ustensile de cuisine',
+      'Utilisée pour faire frire',
+      'Peut être en métal',
+    ],
+  },
+  {
+    word: 'Bureau',
+    hint: [
+      'Lieu de travail',
+      "Meuble pour poser l'ordinateur",
+      'Peut contenir des tiroirs',
+    ],
+  },
+  {
+    word: 'Feu',
+    hint: [
+      'Produit de la chaleur',
+      'Utilisé pour cuire ou se réchauffer',
+      'Peut être dangereux',
+    ],
+  },
+  {
+    word: 'Parapluie',
+    hint: [
+      'Protection contre la pluie',
+      'Se plie et se déplie',
+      'Peut être coloré',
+    ],
+  },
+  {
+    word: 'Serviette',
+    hint: [
+      "Utilisée pour s'essuyer",
+      'Se trouve dans la salle de bain',
+      'Peut être en coton',
+    ],
+  },
+  {
+    word: 'Étoile',
+    hint: [
+      'Visible dans le ciel nocturne',
+      'Émet de la lumière',
+      'Peut former des constellations',
+    ],
+  },
+  {
+    word: 'Lunettes de soleil',
+    hint: ['Protègent les yeux', 'Portées en été', 'Fonction de protection UV'],
+  },
+  {
+    word: 'Bouton',
+    hint: [
+      'Permet de fermer les vêtements',
+      'Peut être en plastique ou en métal',
+      "S'attache à une boutonnière",
+    ],
+  },
+  {
+    word: 'Canapé',
+    hint: [
+      "Meuble pour s'asseoir",
+      'Souvent dans le salon',
+      'Peut être en cuir ou tissu',
+    ],
+  },
+  {
+    word: 'Oreiller',
+    hint: ['Utilisé pour dormir', 'Posé sous la tête', 'Se trouve sur le lit'],
+  },
+  {
+    word: 'Couvercle',
+    hint: [
+      'Ferme un récipient',
+      "Garde la chaleur ou l'humidité",
+      'Peut être en plastique ou en métal',
+    ],
+  },
+  {
+    word: 'Maillot',
+    hint: [
+      'Porté pour nager',
+      "Fait de tissu résistant à l'eau",
+      'Se porte à la plage',
+    ],
+  },
+  {
+    word: 'Armoire',
+    hint: [
+      'Meuble de rangement',
+      'Souvent dans la chambre',
+      'Contient des vêtements',
+    ],
+  },
+  {
+    word: 'Échelle',
+    hint: [
+      'Permet de monter',
+      'Utilisée pour atteindre de la hauteur',
+      'Peut être en métal ou bois',
+    ],
+  },
+  {
+    word: 'Tasse',
+    hint: [
+      'Récipient pour boire',
+      'Souvent pour le café ou le thé',
+      'Se trouve dans la cuisine',
+    ],
+  },
+  {
+    word: 'Éponge',
+    hint: ["Absorbe l'eau", 'Utilisée pour nettoyer', 'Peut être en mousse'],
+  },
+  {
+    word: 'Sac',
+    hint: [
+      'Objet pour transporter des affaires',
+      'Peut être en cuir ou tissu',
+      "Porté à l'épaule ou à la main",
+    ],
+  },
+  {
+    word: 'Cartable',
+    hint: [
+      "Utilisé pour les affaires d'école",
+      'Porté sur le dos',
+      'Peut contenir des cahiers et des stylos',
+    ],
+  },
+  {
+    word: 'Gant',
+    hint: [
+      'Protège les mains',
+      'Porté en hiver',
+      'Peut être en laine ou en cuir',
+    ],
+  },
+  {
+    word: 'Horloge',
+    hint: ["Indique l'heure", 'Accrochée au mur', 'Possède des aiguilles'],
+  },
+  {
+    word: 'Lampe',
+    hint: [
+      'Objet pour éclairer',
+      'Se trouve dans le salon ou chambre',
+      'Peut être sur une table',
+    ],
+  },
+  {
+    word: 'Micro-onde',
+    hint: [
+      'Appareil de cuisine',
+      'Réchauffe rapidement les aliments',
+      'Utilise des ondes',
+    ],
+  },
+  {
+    word: 'Rideau',
+    hint: [
+      'Accroché devant une fenêtre',
+      "Se ferme pour plus d'intimité",
+      'Peut être en tissu',
+    ],
+  },
+  {
+    word: 'Scie',
+    hint: [
+      'Outil pour couper du bois',
+      'Possède des dents',
+      'Utilisée en bricolage',
+    ],
+  },
+  {
+    word: 'Tiroir',
+    hint: [
+      'Espace de rangement',
+      'Peut être tiré et poussé',
+      'Présent dans les meubles',
+    ],
+  },
+  {
+    word: 'Thermomètre',
+    hint: ['Indique la température', 'Utilisé pour mesurer la fièvre'],
   },
 ];
 
