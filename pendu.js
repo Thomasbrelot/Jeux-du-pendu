@@ -768,12 +768,12 @@ window.addEventListener('load', () => {
   }
   // Ajoute un écouteur d'événements pour chaque bouton de clavier virtuel
   const btnClavier = document.querySelectorAll('.btnClavier');
+  const btnClavierCss = document.getElementById('btnClavier');
   if (btnClavier.length > 0) {
     btnClavier.forEach((btn) => {
       btn.addEventListener('click', () => {
         const lettre = btn.innerText.toUpperCase(); // Récupère la lettre du bouton
         traitementLettre(lettre); // Appelle la fonction pour traiter la lettre
-
         // Ajoute la lettre dans motElement si elle est devinée
         if (motElement) {
           motElement.value += lettre; // Ajoute la lettre dans motElement

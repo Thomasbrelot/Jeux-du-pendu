@@ -1,7 +1,0 @@
-btnClavier.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    motElement.value += btn.innerText;
-    afficheMot();
-    console.log(motElement);
-  });
-});
